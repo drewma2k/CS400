@@ -1,0 +1,19 @@
+<form [formGroup]="query_input" (ngSubmit)="getWhales()">
+  Number of sightings to display: <br/>
+  <label> limit
+    <input type="text" formControlName="limit" required>
+  </label><br/>
+  Species: <br/>
+  <label>orca only</label><input type="radio" value="orca" formControlName="species"><br/>
+  <label>all</label><input type="radio" value="all" formControlName="species"><br/>
+  <button type="submit">Get Whales</button>
+</form>
+<div *ngIf="this.query_input.get('limit').invalid">
+<div *ngIf="this.query_input.get('limit').errors.required">
+  Limit is required.
+</div>
+<div *ngIf="this.query_input.get('limit').errors.minlength">
+  limit must be at least 2 characters long.
+</div>
+</div>
+<app-query-results [data]="data" [species]="this.query_input.get('species').value"></app-query-results>

@@ -1,0 +1,21 @@
+<!---<ul>
+  <li *ngFor="let sighting of data">
+    <label>{{data}}</label>
+  </li>
+</ul> --->
+<div *ngIf="this.data && this.species=='all'">
+  <ul>
+    <li *ngFor="let item of data">
+      <label>{{JSON.stringify(item)}}</label>
+    </li>
+  </ul>
+</div>
+<div *ngIf="this.data && this.species=='orca'">
+  <ul>
+    <li *ngFor="let item of data">
+      <div *ngIf="item.species=='orca'">
+        <label>{{JSON.stringify(item)}}</label>
+      </div>
+    </li>
+  </ul>
+</div>
